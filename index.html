@@ -1,0 +1,249 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>Our Forever Story ❤️</title>
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<style>
+body {
+  margin: 0;
+  font-family: 'Segoe UI', sans-serif;
+  background: linear-gradient(to bottom, #ff9a9e, #fad0c4);
+  color: white;
+  text-align: center;
+}
+
+section { padding: 70px 20px; }
+
+h1 { font-size: 3rem; margin-bottom: 20px; }
+h2 { font-size: 2.2rem; margin-bottom: 20px; }
+
+img {
+  border-radius: 20px;
+  box-shadow: 0 10px 25px rgba(0,0,0,0.3);
+}
+
+/* Timeline */
+.timeline { max-width: 600px; margin: auto; }
+.event { margin: 40px 0; }
+.event img { width: 100%; }
+
+/* Adventure slideshow */
+#adventure img {
+  width: 80%;
+  max-width: 500px;
+  transition: opacity 1s;
+}
+
+/* Marriage gallery */
+.marriage-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+  gap: 20px;
+  max-width: 900px;
+  margin: auto;
+}
+.marriage-grid img {
+  width: 100%;
+}
+
+/* Poem */
+.poem {
+  max-width: 700px;
+  margin: auto;
+  font-size: 1.3rem;
+  line-height: 1.8;
+  background: rgba(255,255,255,0.15);
+  padding: 30px;
+  border-radius: 20px;
+}
+
+/* Buttons */
+.buttons {
+  margin-top: 40px;
+  height: 200px;
+  position: relative;
+}
+button {
+  font-size: 1.5rem;
+  padding: 15px 40px;
+  border-radius: 50px;
+  border: none;
+  cursor: pointer;
+}
+#yesBtn { background: #ff4d6d; color: white; }
+#noBtn {
+  background: #333;
+  color: white;
+  position: absolute;
+  left: 50%;
+  top: 80px;
+  transform: translateX(-50%);
+  animation: shake 0.4s infinite;
+}
+
+/* Shake */
+@keyframes shake {
+  0% { transform: translateX(-50%) translateX(0); }
+  25% { transform: translateX(-50%) translateX(-5px); }
+  50% { transform: translateX(-50%) translateX(5px); }
+  75% { transform: translateX(-50%) translateX(-5px); }
+  100% { transform: translateX(-50%) translateX(0); }
+}
+
+/* Confetti */
+.confetti {
+  position: fixed;
+  width: 10px;
+  height: 10px;
+  animation: fall 3s linear infinite;
+}
+@keyframes fall {
+  0% { transform: translateY(-100px) rotate(0); }
+  100% { transform: translateY(100vh) rotate(360deg); }
+}
+
+#celebration { display: none; }
+#celebration img { width: 250px; }
+</style>
+</head>
+
+<body>
+
+<audio autoplay loop>
+  <source src="music.mp3" type="audio/mpeg">
+</audio>
+
+<!-- Typing -->
+<section>
+  <h1 id="typing"></h1>
+</section>
+
+<!-- FIRSTS -->
+<section>
+  <h1>Our Firsts ❤️</h1>
+  <div class="timeline" id="timeline"></div>
+</section>
+
+<!-- ADVENTURES -->
+<section id="adventure">
+  <h1>Our Adventures 🌍</h1>
+  <img id="adventureImg">
+</section>
+
+<!-- 💍 MARRIAGE -->
+<section>
+  <h1>Our Marriage 💍</h1>
+  <h2>“Best decision of my life”</h2>
+
+  <div class="marriage-grid" id="marriageGrid"></div>
+</section>
+
+<!-- POEM -->
+<section>
+  <h1>For You, Always ❤️</h1>
+  <div class="poem">
+    I met you as a moment,<br>
+    But you became my forever.<br><br>
+
+    Through every laugh and every tear,<br>
+    Every dream, every fear,<br>
+    Choosing you was never a question —<br>
+    It was the answer, always clear.<br><br>
+
+    If I had to live my life again,<br>
+    With every joy and every strife,<br>
+    I would still choose you,<br>
+    The best decision of my life. 💖
+  </div>
+</section>
+
+<!-- QUESTION -->
+<section id="question">
+  <h1>Will you be my Valentine? 💖</h1>
+  <div class="buttons">
+    <button id="yesBtn" onclick="yesClicked()">❤️ Yes</button>
+    <button id="noBtn" onmouseover="moveNo()">❌ No</button>
+  </div>
+</section>
+
+<!-- CELEBRATION -->
+<section id="celebration">
+  <h1>Forever & Always 🎉💍</h1>
+  <p>I love you more every day ❤️</p>
+  <img src="us.jpg">
+</section>
+
+<script>
+/* CHANGE NAME */
+const herName = "Mohini";
+
+/* Typing */
+const text = `Dear ${herName}, this is our forever story ❤️`;
+let i = 0;
+(function type() {
+  if (i < text.length) {
+    typing.innerHTML += text[i++];
+    setTimeout(type, 70);
+  }
+})();
+
+/* FIRSTS */
+const firsts = [
+  { file: "2021-02-14_first-meet.jpg", text: "Our first meet ✨" },
+  { file: "2021-02-20_first-gift.jpg", text: "Your first gift 🎁" }
+];
+
+firsts.forEach(item => {
+  timeline.innerHTML += `
+    <div class="event">
+      <img src="first/${item.file}">
+      <p>${item.file.split("_")[0]} – ${item.text}</p>
+    </div>`;
+});
+
+/* ADVENTURE SLIDESHOW */
+const adventureImages = ["adv1.jpg","adv2.jpg","adv3.jpg"];
+let advIndex = 0;
+adventureImg.src = "adventure/" + adventureImages[0];
+
+setInterval(() => {
+  adventureImg.style.opacity = 0;
+  setTimeout(() => {
+    advIndex = (advIndex + 1) % adventureImages.length;
+    adventureImg.src = "adventure/" + adventureImages[advIndex];
+    adventureImg.style.opacity = 1;
+  }, 1000);
+}, 3000);
+
+/* MARRIAGE GALLERY */
+const marriageImages = ["m1.jpg","m2.jpg","m3.jpg"];
+marriageImages.forEach(img => {
+  marriageGrid.innerHTML += `<img src="marriage/${img}">`;
+});
+
+/* NO BUTTON */
+function moveNo() {
+  noBtn.innerText = "Not allowed 😜";
+  noBtn.style.left = Math.random() * (innerWidth - 150) + "px";
+  noBtn.style.top = Math.random() * (innerHeight - 150) + "px";
+}
+
+/* YES */
+function yesClicked() {
+  question.style.display = "none";
+  celebration.style.display = "block";
+  for (let i = 0; i < 80; i++) {
+    const c = document.createElement("div");
+    c.className = "confetti";
+    c.style.left = Math.random() * innerWidth + "px";
+    c.style.background = `hsl(${Math.random()*360},100%,70%)`;
+    document.body.appendChild(c);
+    setTimeout(() => c.remove(), 5000);
+  }
+}
+</script>
+
+</body>
+</html>
