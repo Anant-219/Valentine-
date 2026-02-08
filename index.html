@@ -191,29 +191,29 @@ let i = 0;
 
 /* FIRSTS */
 const firsts = [
-  { file: "2025-03-24_first-bookey.jpg", text: "Our first Bookey ✨" },
-  { file: "2025-02-22_first-gift.jpg", text: "Your first gift 🎁" },
-  { file: "2025-02-22_first-gift1.jpg", text: "Your first gift 🎁" },
-  { file: "2025-02-22_first-gift2.jpg", text: "Your first gift 🎁" },
-  { file: "2025-09-04_my-first-gift-from-her.jpg", text: "Your first gift 🎁" },
-  { file: "2025-09-04_her-first-visit-to-home.jpg", text: "Your first gift 🎁" },
-  { file: "2025-09-04_her-first-visit-to-home-1.jpg", text: "Your first gift 🎁" },
-  { file: "2025-09-04_first-meet-1.jpg", text: "Your first gift 🎁" },
-  { file: "2025-02-22_first-meet-2.jpg", text: "Your first gift 🎁" },
-  { file: "2025-02-22_first-meet-3.jpg", text: "Your first gift 🎁" },
-  { file: "2025-02-22_first-photo-send-by-her", text: "Your first gift 🎁" },
-  { file: "2025-02-22_ourfirstcar.jpg", text: "Your first gift 🎁" },
-  { file: "2025-02-22_first-photo-of-her.jpg", text: "Your first gift 🎁" },
-  { file: "2025-02-22_first-photo-of-her1.jpg", text: "Your first gift 🎁" },
-  { file: "2025-02-22_ourfirstcar.jpg", text: "Your first gift 🎁" },
-  { file: "2025-02-22_first-chaha-by-her.jpg", text: "Your first gift 🎁" },
-  { file: "2025-02-22_first-visit-to-her-home.jpg", text: "Your first gift 🎁" },
-  { file: "2025-02-22_first-mehandi.jpg", text: "Your first gift 🎁" },
-  { file: "2025-02-22_first-dasara1.jpg", text: "Your first gift 🎁" },
-  { file: "2025-02-22_first-dasara2.jpg", text: "Your first gift 🎁" },
-  { file: "2025-02-22_first-diwali1.jpg", text: "Your first gift 🎁" },
-  { file: "2025-02-22_first-diwali2.jpg", text: "Your first gift 🎁" },
-  { file: "2025-02-22_first-sankranti.jpg", text: "Your first gift 🎁" }
+  { file: "first-bookey.jpg", text: "Our first Bookey ✨" },
+  { file: "first-gift.jpg", text: "Your first gift 🎁" },
+  { file: "first-gift1.jpg", text: "Your first gift 🎁" },
+  { file: "first-gift2.jpg", text: "Your first gift 🎁" },
+  { file: "my-first-gift-from-her.jpg", text: "Your first gift 🎁" },
+  { file: "her-first-visit-to-home.jpg", text: "Your first gift 🎁" },
+  { file: "her-first-visit-to-home-1.jpg", text: "Your first gift 🎁" },
+  { file: "first-meet-1.jpg", text: "Your first gift 🎁" },
+  { file: "first-meet-2.jpg", text: "Your first gift 🎁" },
+  { file: "first-meet-3.jpg", text: "Your first gift 🎁" },
+  { file: "first-photo-send-by-her", text: "Your first gift 🎁" },
+  { file: "ourfirstcar.jpg", text: "Your first gift 🎁" },
+  { file: "first-photo-of-her.jpg", text: "Your first gift 🎁" },
+  { file: "first-photo-of-her1.jpg", text: "Your first gift 🎁" },
+  { file: "ourfirstcar.jpg", text: "Your first gift 🎁" },
+  { file: "first-chaha-by-her.jpg", text: "Your first gift 🎁" },
+  { file: "first-visit-to-her-home.jpg", text: "Your first gift 🎁" },
+  { file: "first-mehandi.jpg", text: "Your first gift 🎁" },
+  { file: "first-dasara1.jpg", text: "Your first gift 🎁" },
+  { file: "first-dasara2.jpg", text: "Your first gift 🎁" },
+  { file: "first-diwali1.jpg", text: "Your first gift 🎁" },
+  { file: "first-diwali2.jpg", text: "Your first gift 🎁" },
+  { file: "first-sankranti.jpg", text: "Your first gift 🎁" }
 ];
 
 firsts.forEach(item => {
@@ -225,7 +225,7 @@ firsts.forEach(item => {
 });
 
 /* ADVENTURE SLIDESHOW */
-const adventureImages = ["adv1.jpg","adv2.jpg","adv3.jpg","adv4.jpg","adv5.jpg","adv6.jpg","adv7.jpg","adv8.jpg","adv9.jpg","adv10.jpg","adv11.jpg","adv12.jpg","adv13.jpg","adv14.jpg","adv15.jpg","adv16.jpg","adv17.jpg","adv18.jpg","adv19.jpg","adv20.jpg","adv21.jpg"];
+const adventureImages = ["adv1.jpg","adv2.jpg","adv3.jpg","adv4.jpg","adv5.jpg","adv6.jpg","adv7.jpg","adv8.jpg","adv9.jpg","adv10.jpg","adv11.jpg","adv12.jpg","adv13.jpg","adv14.jpg","adv15.jpg","adv16.jpg","adv17.jpg","adv18.jpg","adv19.jpg","adv20.jpg","adv21.jpg","adv22.jpg","adv23.jpg"];
 let advIndex = 0;
 adventureImg.src = "adventures/" + adventureImages[0];
 
@@ -233,7 +233,7 @@ setInterval(() => {
   adventureImg.style.opacity = 0;
   setTimeout(() => {
     advIndex = (advIndex + 1) % adventureImages.length;
-    adventureImg.src = "adventure/" + adventureImages[advIndex];
+    adventureImg.src = "adventures/" + adventureImages[advIndex];
     adventureImg.style.opacity = 1;
   }, 1000);
 }, 3000);
