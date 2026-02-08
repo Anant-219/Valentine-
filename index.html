@@ -15,13 +15,28 @@ body {
     radial-gradient(circle at bottom right, #c77dff, transparent 45%),
     linear-gradient(135deg, #ffb3c6, #ffd6e0, #e0aaff);
   background-attachment: fixed;
-  color: white;
+  color: #fff1f5; /* warm ivory */
   text-align: center;
 }
 
 section { padding: 80px 20px; }
-h1 { font-size: 3rem; margin-bottom: 20px; }
-h2 { font-size: 2.2rem; margin-bottom: 20px; }
+
+/* ===== TYPOGRAPHY ===== */
+h1 {
+  font-size: 3rem;
+  margin-bottom: 20px;
+  color: #ffe0ec; /* soft rose */
+}
+
+h2 {
+  font-size: 2.2rem;
+  margin-bottom: 20px;
+  color: #ffd6e8;
+}
+
+p, span {
+  color: rgba(255,255,255,0.85);
+}
 
 img {
   border-radius: 22px;
@@ -50,10 +65,10 @@ img {
   box-shadow: 0 25px 45px rgba(0,0,0,0.45);
 }
 
-.first-card img {
-  width: 100%;
-  height: 220px;
-  object-fit: cover;
+.first-card h3 {
+  margin-top: 12px;
+  font-size: 1.15rem;
+  color: #fff5cc; /* champagne */
 }
 
 /* ===== MODAL ===== */
@@ -70,6 +85,10 @@ img {
 .modal-content img {
   max-width: 90%;
   max-height: 75vh;
+}
+
+.modal h2 {
+  color: #fff5cc;
 }
 
 .close {
@@ -125,6 +144,7 @@ img {
   background: rgba(255,255,255,0.2);
   padding: 35px;
   border-radius: 25px;
+  color: #fff5cc;
 }
 
 /* ===== BUTTONS ===== */
@@ -153,13 +173,6 @@ button {
   animation: shake 0.4s infinite;
 }
 
-@keyframes shake {
-  0%,100% { transform: translateX(-50%) translateX(0); }
-  25% { transform: translateX(-50%) translateX(-6px); }
-  50% { transform: translateX(-50%) translateX(6px); }
-  75% { transform: translateX(-50%) translateX(-6px); }
-}
-
 /* ===== CONFETTI ===== */
 .confetti {
   position: fixed;
@@ -173,10 +186,8 @@ button {
   to { transform: translateY(100vh) rotate(360deg); }
 }
 
-/* ===== CELEBRATION (US PHOTO FIX) ===== */
-#celebration {
-  display: none;
-}
+/* ===== CELEBRATION ===== */
+#celebration { display: none; }
 
 .us-photo {
   width: 260px;
@@ -232,6 +243,8 @@ button {
       <img src="marriage/m2.jpeg">
       <img src="marriage/m3.jpeg">
       <img src="marriage/m4.jpeg">
+      <img src="marriage/m5.jpeg">
+      <img src="marriage/m6.jpeg">
     </div>
   </div>
 </section>
@@ -278,41 +291,7 @@ let t = 0;
 })();
 
 /* FIRSTS */
-const firsts = [
-  { file: "first-bookey.jpg", text: "Our first Bookey ✨📖" },
-
-  { file: "first-meet-1.jpg", text: "Our very first meet ❤️🤝" },
-  { file: "first-meet-2.jpg", text: "That first meeting smile 😊💖" },
-  { file: "first-meet-3.jpg", text: "First meet memories 💕📸" },
-
-  { file: "first-gift.jpg", text: "Your first gift to me 🎁💝" },
-  { file: "first-gift1.jpg", text: "Another surprise gift 🎁✨" },
-  { file: "first-gift2.jpg", text: "A gift full of love 🎁❤️" },
-  { file: "my-first-gift-from-her.jpg", text: "My first gift from you 💖🎁" },
-
-  { file: "first-photo-send-by-her.jpg", text: "First photo you sent me 📸😍" },
-  { file: "first-photo-of-her.jpg", text: "First photo of you 💕📷" },
-  { file: "first-photo-of-her1.jpg", text: "Still my favorite photo 😍📸" },
-
-  { file: "her-first-visit-to-home.jpg", text: "Your first visit to my home 🏡❤️" },
-  { file: "her-first-visit-to-home-1.jpg", text: "A day my home felt complete 🏠💖" },
-  { file: "first-visit-to-her-home.jpg", text: "My first visit to your home 🏡😊" },
-
-  { file: "first-chaha-by-her.jpg", text: "First tea made by you ☕💞" },
-
-  { file: "ourfirstcar.jpg", text: "Our first car 🚗💑" },
-
-  { file: "first-mehandi.jpg", text: "Your first Mehndi 💚✨" },
-
-  { file: "first-dasara1.jpg", text: "Our first Dasara together 🎉🪔" },
-  { file: "first-dasara2.jpg", text: "Dasara memories 💃🎊" },
-
-  { file: "first-diwali1.jpg", text: "Our first Diwali 🪔❤️" },
-  { file: "first-diwali2.jpg", text: "Diwali lights & love ✨🪔" },
-
-  { file: "first-sankranti.jpg", text: "Our first Sankranti 🌾💛" }
-];
-
+const firsts = [ { file: "first-bookey.jpg", text: "Our first Bookey ✨📖" }, { file: "first-meet-1.jpg", text: "Our very first meet ❤️🤝" }, { file: "first-meet-2.jpg", text: "That first meeting smile 😊💖" }, { file: "first-meet-3.jpg", text: "First meet memories 💕📸" }, { file: "first-gift.jpg", text: "Your first gift to me 🎁💝" }, { file: "first-gift1.jpg", text: "Another surprise gift 🎁✨" }, { file: "first-gift2.jpg", text: "A gift full of love 🎁❤️" }, { file: "my-first-gift-from-her.jpg", text: "My first gift from you 💖🎁" }, { file: "first-photo-send-by-her.jpg", text: "First photo you sent me 📸😍" }, { file: "first-photo-of-her.jpg", text: "First photo of you 💕📷" }, { file: "first-photo-of-her1.jpg", text: "Still my favorite photo 😍📸" }, { file: "her-first-visit-to-home.jpg", text: "Your first visit to my home 🏡❤️" }, { file: "her-first-visit-to-home-1.jpg", text: "A day my home felt complete 🏠💖" }, { file: "first-visit-to-her-home.jpg", text: "My first visit to your home 🏡😊" }, { file: "first-chaha-by-her.jpg", text: "First tea made by you ☕💞" }, { file: "ourfirstcar.jpg", text: "Our first car 🚗💑" }, { file: "first-mehandi.jpg", text: "Your first Mehndi 💚✨" }, { file: "first-dasara1.jpg", text: "Our first Dasara together 🎉🪔" }, { file: "first-dasara2.jpg", text: "Dasara memories 💃🎊" }, { file: "first-diwali1.jpg", text: "Our first Diwali 🪔❤️" }, { file: "first-diwali2.jpg", text: "Diwali lights & love ✨🪔" }, { file: "first-sankranti.jpg", text: "Our first Sankranti 🌾💛" } ];
 
 firsts.forEach(i => {
   firstsTable.innerHTML += `
