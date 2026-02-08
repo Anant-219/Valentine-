@@ -6,20 +6,29 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
 <style>
+/* ===== BACKGROUND ===== */
 body {
   margin: 0;
   font-family: 'Segoe UI', sans-serif;
-  background: linear-gradient(to bottom, #ff9a9e, #fad0c4);
+  background:
+    radial-gradient(circle at top left, #ff9a9e, transparent 40%),
+    radial-gradient(circle at bottom right, #c77dff, transparent 45%),
+    linear-gradient(135deg, #ffb3c6, #ffd6e0, #e0aaff);
+  background-attachment: fixed;
   color: white;
   text-align: center;
 }
 
-/* GENERAL */
-section { padding: 70px 20px; }
-h1 { font-size: 3rem; }
-img { border-radius: 20px; box-shadow: 0 10px 25px rgba(0,0,0,0.3); }
+section { padding: 80px 20px; }
+h1 { font-size: 3rem; margin-bottom: 20px; }
+h2 { font-size: 2.2rem; margin-bottom: 20px; }
 
-/* FIRSTS GRID */
+img {
+  border-radius: 22px;
+  box-shadow: 0 15px 35px rgba(0,0,0,0.35);
+}
+
+/* ===== FIRSTS GRID ===== */
 .firsts-table {
   display: grid;
   grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
@@ -38,82 +47,87 @@ img { border-radius: 20px; box-shadow: 0 10px 25px rgba(0,0,0,0.3); }
 
 .first-card:hover {
   transform: translateY(-8px) scale(1.04);
-  box-shadow: 0 25px 45px rgba(0,0,0,0.4);
+  box-shadow: 0 25px 45px rgba(0,0,0,0.45);
 }
 
 .first-card img {
   width: 100%;
   height: 220px;
   object-fit: cover;
-  border-radius: 16px;
 }
 
-.first-card h3 {
-  margin-top: 12px;
-  font-size: 1.2rem;
-}
-
-/* MODAL */
+/* ===== MODAL ===== */
 .modal {
   display: none;
   position: fixed;
-  z-index: 999;
   inset: 0;
   background: rgba(0,0,0,0.85);
+  z-index: 999;
   justify-content: center;
   align-items: center;
 }
 
-.modal-content {
-  max-width: 90%;
-  max-height: 90%;
-}
-
 .modal-content img {
-  max-width: 100%;
-  max-height: 70vh;
-}
-
-.modal h2 {
-  margin-top: 20px;
+  max-width: 90%;
+  max-height: 75vh;
 }
 
 .close {
   position: absolute;
-  top: 20px;
-  right: 30px;
-  font-size: 40px;
+  top: 25px;
+  right: 35px;
+  font-size: 42px;
   cursor: pointer;
 }
 
-/* ADVENTURE */
+/* ===== ADVENTURES ===== */
 #adventure img {
   width: 80%;
   max-width: 520px;
   transition: opacity 1s;
 }
 
-/* MARRIAGE */
-.marriage-grid {
+/* ===== MARRIAGE ===== */
+.marriage-wrapper {
+  max-width: 1000px;
+  margin: auto;
+}
+
+.marriage-hero img {
+  width: 100%;
+  max-width: 600px;
+  margin-bottom: 40px;
+  border: 4px solid rgba(255,255,255,0.4);
+}
+
+.marriage-strip {
   display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+  grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
   gap: 20px;
-  max-width: 900px;
-  margin: auto;
 }
 
-/* POEM */
+.marriage-strip img {
+  height: 200px;
+  object-fit: cover;
+  transition: transform 0.4s;
+}
+
+.marriage-strip img:hover {
+  transform: scale(1.08);
+}
+
+/* ===== POEM ===== */
 .poem {
-  max-width: 700px;
+  max-width: 720px;
   margin: auto;
-  font-size: 1.3rem;
-  line-height: 1.8;
-  background: rgba(255,255,255,0.15);
-  padding: 30px;
-  border-radius: 20px;
+  font-size: 1.35rem;
+  line-height: 1.9;
+  background: rgba(255,255,255,0.2);
+  padding: 35px;
+  border-radius: 25px;
 }
 
-/* BUTTONS */
+/* ===== BUTTONS ===== */
 .buttons {
   margin-top: 40px;
   height: 200px;
@@ -140,14 +154,13 @@ button {
 }
 
 @keyframes shake {
-  0% { transform: translateX(-50%) translateX(0); }
-  25% { transform: translateX(-50%) translateX(-5px); }
-  50% { transform: translateX(-50%) translateX(5px); }
-  75% { transform: translateX(-50%) translateX(-5px); }
-  100% { transform: translateX(-50%) translateX(0); }
+  0%,100% { transform: translateX(-50%) translateX(0); }
+  25% { transform: translateX(-50%) translateX(-6px); }
+  50% { transform: translateX(-50%) translateX(6px); }
+  75% { transform: translateX(-50%) translateX(-6px); }
 }
 
-/* CONFETTI */
+/* ===== CONFETTI ===== */
 .confetti {
   position: fixed;
   width: 10px;
@@ -156,11 +169,26 @@ button {
 }
 
 @keyframes fall {
-  0% { transform: translateY(-100px) rotate(0); }
-  100% { transform: translateY(100vh) rotate(360deg); }
+  from { transform: translateY(-100px) rotate(0); }
+  to { transform: translateY(100vh) rotate(360deg); }
 }
 
-#celebration { display: none; }
+/* ===== CELEBRATION (US PHOTO FIX) ===== */
+#celebration {
+  display: none;
+}
+
+.us-photo {
+  width: 260px;
+  height: 360px;
+  object-fit: cover;
+  margin-top: 30px;
+  border-radius: 28px;
+  border: 4px solid rgba(255,255,255,0.5);
+  box-shadow:
+    0 0 20px rgba(255,77,109,0.8),
+    0 0 40px rgba(255,182,193,0.6);
+}
 </style>
 </head>
 
@@ -195,7 +223,17 @@ button {
 <section>
   <h1>Our Marriage 💍</h1>
   <h2>“Best decision of my life”</h2>
-  <div class="marriage-grid" id="marriageGrid"></div>
+
+  <div class="marriage-wrapper">
+    <div class="marriage-hero">
+      <img src="marriage/m1.jpg">
+    </div>
+    <div class="marriage-strip">
+      <img src="marriage/m2.jpeg">
+      <img src="marriage/m3.jpeg">
+      <img src="marriage/m4.jpeg">
+    </div>
+  </div>
 </section>
 
 <!-- POEM -->
@@ -204,8 +242,9 @@ button {
   <div class="poem">
     I met you as a moment,<br>
     But you became my forever.<br><br>
-    If I had to live my life again,<br>
-    I would still choose you —<br>
+    Through every laugh and every tear,<br>
+    I would still choose you,<br>
+    Again and again,<br>
     The best decision of my life. 💖
   </div>
 </section>
@@ -222,7 +261,7 @@ button {
 <!-- CELEBRATION -->
 <section id="celebration">
   <h1>Forever & Always 🎉💍</h1>
-  <img src="us.jpg">
+  <img src="us.jpg" class="us-photo">
 </section>
 
 <script>
@@ -238,7 +277,7 @@ let t = 0;
   }
 })();
 
-/* FIRSTS DATA */
+/* FIRSTS */
 const firsts = [
   { file: "first-bookey.jpg", text: "Our first Bookey ✨📖" },
 
@@ -275,12 +314,11 @@ const firsts = [
 ];
 
 
-const table = document.getElementById("firstsTable");
-firsts.forEach(item => {
-  table.innerHTML += `
-    <div class="first-card" onclick="openModal('${item.file}','${item.text}')">
-      <img src="firsts/${item.file}">
-      <h3>${item.text}</h3>
+firsts.forEach(i => {
+  firstsTable.innerHTML += `
+    <div class="first-card" onclick="openModal('${i.file}','${i.text}')">
+      <img src="firsts/${i.file}">
+      <h3>${i.text}</h3>
     </div>`;
 });
 
@@ -291,17 +329,15 @@ function openModal(img, text) {
   modalText.innerText = text;
   document.body.style.overflow = "hidden";
 }
-
 function closeModal() {
   modal.style.display = "none";
   document.body.style.overflow = "auto";
 }
 
-/* ADVENTURE */
+/* ADVENTURES */
 const adventureImages = ["adv1.jpg","adv2.jpg","adv3.jpg","adv4.jpg","adv5.jpg","adv6.jpg","adv7.jpg","adv8.jpg","adv9.jpg","adv10.jpg","adv11.jpg","adv12.jpg","adv13.jpg","adv14.jpg","adv15.jpg","adv16.jpg","adv17.jpg","adv18.jpg","adv19.jpg","adv20.jpg","adv21.jpg","adv22.jpg","adv23.jpg"];
 let ai = 0;
 adventureImg.src = "adventures/" + adventureImages[0];
-
 setInterval(() => {
   adventureImg.style.opacity = 0;
   setTimeout(() => {
@@ -310,11 +346,6 @@ setInterval(() => {
     adventureImg.style.opacity = 1;
   }, 1000);
 }, 3000);
-
-/* MARRIAGE */
-["m1.jpg","m2.jpeg","m3.jpeg"].forEach(img => {
-  marriageGrid.innerHTML += `<img src="marriage/${img}">`;
-});
 
 /* BUTTONS */
 function moveNo() {
