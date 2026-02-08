@@ -24,19 +24,52 @@ img {
   box-shadow: 0 10px 25px rgba(0,0,0,0.3);
 }
 
-/* Timeline */
-.timeline { max-width: 600px; margin: auto; }
-.event { margin: 40px 0; }
-.event img { width: 100%; }
+/* ===== FIRSTS TABLE / GRID ===== */
+.firsts-table {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+  gap: 25px;
+  max-width: 1200px;
+  margin: auto;
+}
 
-/* Adventure slideshow */
+.first-card {
+  background: rgba(255,255,255,0.18);
+  border-radius: 22px;
+  padding: 15px;
+  transition: transform 0.4s ease, box-shadow 0.4s ease;
+}
+
+.first-card:hover {
+  transform: translateY(-10px) scale(1.04);
+  box-shadow: 0 25px 45px rgba(0,0,0,0.4);
+}
+
+.first-card img {
+  width: 100%;
+  height: 220px;
+  object-fit: cover;
+  border-radius: 16px;
+}
+
+.first-card h3 {
+  margin: 12px 0 6px;
+  font-size: 1.25rem;
+}
+
+.first-card span {
+  font-size: 0.95rem;
+  opacity: 0.85;
+}
+
+/* ===== ADVENTURE SLIDESHOW ===== */
 #adventure img {
   width: 80%;
-  max-width: 500px;
+  max-width: 520px;
   transition: opacity 1s;
 }
 
-/* Marriage gallery */
+/* ===== MARRIAGE GRID ===== */
 .marriage-grid {
   display: grid;
   grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
@@ -44,11 +77,8 @@ img {
   max-width: 900px;
   margin: auto;
 }
-.marriage-grid img {
-  width: 100%;
-}
 
-/* Poem */
+/* ===== POEM ===== */
 .poem {
   max-width: 700px;
   margin: auto;
@@ -59,12 +89,13 @@ img {
   border-radius: 20px;
 }
 
-/* Buttons */
+/* ===== BUTTONS ===== */
 .buttons {
   margin-top: 40px;
   height: 200px;
   position: relative;
 }
+
 button {
   font-size: 1.5rem;
   padding: 15px 40px;
@@ -72,7 +103,9 @@ button {
   border: none;
   cursor: pointer;
 }
+
 #yesBtn { background: #ff4d6d; color: white; }
+
 #noBtn {
   background: #333;
   color: white;
@@ -83,7 +116,6 @@ button {
   animation: shake 0.4s infinite;
 }
 
-/* Shake */
 @keyframes shake {
   0% { transform: translateX(-50%) translateX(0); }
   25% { transform: translateX(-50%) translateX(-5px); }
@@ -92,13 +124,14 @@ button {
   100% { transform: translateX(-50%) translateX(0); }
 }
 
-/* Confetti */
+/* ===== CONFETTI ===== */
 .confetti {
   position: fixed;
   width: 10px;
   height: 10px;
   animation: fall 3s linear infinite;
 }
+
 @keyframes fall {
   0% { transform: translateY(-100px) rotate(0); }
   100% { transform: translateY(100vh) rotate(360deg); }
@@ -111,11 +144,7 @@ button {
 
 <body>
 
-<audio autoplay loop>
-  <source src="" type="audio/mpeg">
-</audio>
-
-<!-- Typing -->
+<!-- INTRO -->
 <section>
   <h1 id="typing"></h1>
 </section>
@@ -123,7 +152,7 @@ button {
 <!-- FIRSTS -->
 <section>
   <h1>Our Firsts ❤️</h1>
-  <div class="timeline" id="timeline"></div>
+  <div class="firsts-table" id="firstsTable"></div>
 </section>
 
 <!-- ADVENTURES -->
@@ -132,11 +161,10 @@ button {
   <img id="adventureImg">
 </section>
 
-<!-- 💍 MARRIAGE -->
+<!-- MARRIAGE -->
 <section>
   <h1>Our Marriage 💍</h1>
   <h2>“Best decision of my life”</h2>
-
   <div class="marriage-grid" id="marriageGrid"></div>
 </section>
 
@@ -146,15 +174,10 @@ button {
   <div class="poem">
     I met you as a moment,<br>
     But you became my forever.<br><br>
-
     Through every laugh and every tear,<br>
-    Every dream, every fear,<br>
-    Choosing you was never a question —<br>
-    It was the answer, always clear.<br><br>
-
+    Choosing you was always the answer.<br><br>
     If I had to live my life again,<br>
-    With every joy and every strife,<br>
-    I would still choose you,<br>
+    I would still choose you —<br>
     The best decision of my life. 💖
   </div>
 </section>
@@ -176,82 +199,82 @@ button {
 </section>
 
 <script>
-/* CHANGE NAME */
+/* NAME */
 const herName = "Mohini";
 
 /* Typing */
 const text = `Dear ${herName}, this is our forever story ❤️`;
-let i = 0;
+let ti = 0;
 (function type() {
-  if (i < text.length) {
-    typing.innerHTML += text[i++];
+  if (ti < text.length) {
+    typing.innerHTML += text[ti++];
     setTimeout(type, 70);
   }
 })();
 
-/* FIRSTS */
+/* FIRSTS DATA */
 const firsts = [
   { file: "first-bookey.jpg", text: "Our first Bookey ✨" },
   { file: "first-gift.jpg", text: "Your first gift 🎁" },
-  { file: "first-gift1.jpg", text: "Your first gift 🎁" },
-  { file: "first-gift2.jpg", text: "Your first gift 🎁" },
-  { file: "my-first-gift-from-her.jpg", text: "Your first gift 🎁" },
-  { file: "her-first-visit-to-home.jpg", text: "Your first gift 🎁" },
-  { file: "her-first-visit-to-home-1.jpg", text: "Your first gift 🎁" },
-  { file: "first-meet-1.jpg", text: "Your first gift 🎁" },
-  { file: "first-meet-2.jpg", text: "Your first gift 🎁" },
-  { file: "first-meet-3.jpg", text: "Your first gift 🎁" },
-  { file: "first-photo-send-by-her.jpg", text: "Your first gift 🎁" },
-  { file: "ourfirstcar.jpg", text: "Your first gift 🎁" },
-  { file: "first-photo-of-her.jpg", text: "Your first gift 🎁" },
-  { file: "first-photo-of-her1.jpg", text: "Your first gift 🎁" },
-  { file: "ourfirstcar.jpg", text: "Your first gift 🎁" },
-  { file: "first-chaha-by-her.jpg", text: "Your first gift 🎁" },
-  { file: "first-visit-to-her-home.jpg", text: "Your first gift 🎁" },
-  { file: "first-mehandi.jpg", text: "Your first gift 🎁" },
-  { file: "first-dasara1.jpg", text: "Your first gift 🎁" },
-  { file: "first-dasara2.jpg", text: "Your first gift 🎁" },
-  { file: "first-diwali1.jpg", text: "Your first gift 🎁" },
-  { file: "first-diwali2.jpg", text: "Your first gift 🎁" },
-  { file: "first-sankranti.jpg", text: "Your first gift 🎁" }
+  { file: "first-gift1.jpg", text: "Another first gift 🎁" },
+  { file: "first-gift2.jpg", text: "Memorable surprise 🎁" },
+  { file: "my-first-gift-from-her.jpg", text: "My first gift from you 💖" },
+  { file: "her-first-visit-to-home.jpg", text: "Your first visit home 🏠" },
+  { file: "her-first-visit-to-home-1.jpg", text: "A day to remember ❤️" },
+  { file: "first-meet-1.jpg", text: "Our first meet ✨" },
+  { file: "first-meet-2.jpg", text: "First meet memories 💕" },
+  { file: "first-meet-3.jpg", text: "That smile ❤️" },
+  { file: "first-photo-send-by-her.jpg", text: "First photo you sent 📸" },
+  { file: "ourfirstcar.jpg", text: "Our first car 🚗" },
+  { file: "first-photo-of-her.jpg", text: "First photo of you 💕" },
+  { file: "first-photo-of-her1.jpg", text: "Still my favorite 📸" },
+  { file: "first-chaha-by-her.jpg", text: "First tea made by you ☕" },
+  { file: "first-visit-to-her-home.jpg", text: "First visit to your home 🏡" },
+  { file: "first-mehandi.jpg", text: "First Mehndi 💚" },
+  { file: "first-dasara1.jpg", text: "First Dasara 🎉" },
+  { file: "first-dasara2.jpg", text: "Festival vibes ✨" },
+  { file: "first-diwali1.jpg", text: "First Diwali 🪔" },
+  { file: "first-diwali2.jpg", text: "Lights & love 🪔" },
+  { file: "first-sankranti.jpg", text: "First Sankranti 🌾" }
 ];
 
+const table = document.getElementById("firstsTable");
 firsts.forEach(item => {
-  timeline.innerHTML += `
-    <div class="event">
+  table.innerHTML += `
+    <div class="first-card">
       <img src="firsts/${item.file}">
-      <p>${item.file.split("_")[0]} – ${item.text}</p>
+      <h3>${item.text}</h3>
+      <span>A memory I’ll always cherish 💖</span>
     </div>`;
 });
 
 /* ADVENTURE SLIDESHOW */
-const adventureImages = ["adv1.jpg","adv2.jpg","adv3.jpg","adv4.jpg","adv5.jpg","adv6.jpg","adv7.jpg","adv8.jpg","adv9.jpg","adv10.jpg","adv11.jpg","adv12.jpg","adv13.jpg","adv14.jpg","adv15.jpg","adv16.jpg","adv17.jpg","adv18.jpg","adv19.jpg","adv20.jpg","adv21.jpg","adv22.jpg","adv23.jpg"];
-let advIndex = 0;
+const adventureImages = ["adv1.jpg","adv2.jpg","adv3.jpg"];
+let ai = 0;
 adventureImg.src = "adventures/" + adventureImages[0];
 
 setInterval(() => {
   adventureImg.style.opacity = 0;
   setTimeout(() => {
-    advIndex = (advIndex + 1) % adventureImages.length;
-    adventureImg.src = "adventures/" + adventureImages[advIndex];
+    ai = (ai + 1) % adventureImages.length;
+    adventureImg.src = "adventures/" + adventureImages[ai];
     adventureImg.style.opacity = 1;
   }, 1000);
 }, 3000);
 
-/* MARRIAGE GALLERY */
-const marriageImages = ["m1.jpg","m2.jpeg","m3.jpeg","m4.jpeg","m5.jpeg","m6.jpeg"];
+/* MARRIAGE */
+const marriageImages = ["m1.jpg","m2.jpeg","m3.jpeg"];
 marriageImages.forEach(img => {
   marriageGrid.innerHTML += `<img src="marriage/${img}">`;
 });
 
-/* NO BUTTON */
+/* BUTTONS */
 function moveNo() {
   noBtn.innerText = "Not allowed 😜";
   noBtn.style.left = Math.random() * (innerWidth - 150) + "px";
   noBtn.style.top = Math.random() * (innerHeight - 150) + "px";
 }
 
-/* YES */
 function yesClicked() {
   question.style.display = "none";
   celebration.style.display = "block";
